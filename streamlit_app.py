@@ -72,7 +72,7 @@ if page == "Welcome":
     )
 
     # Add an image above the button (Replace with your GitHub image URL)
-    image_url = "https://github.com/TalMirzai/hackathon/blob/a5c2ec698888485aa7e4cb4621bd5757fe47ec86/aaaa.png"
+    image_url = "https://raw.githubusercontent.com/TalMirzai/hackathon/refs/heads/main/aaaa.png"
     st.image(image_url, use_container_width=True)
 
     # Add spacing before the button
