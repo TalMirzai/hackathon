@@ -65,18 +65,72 @@ page = st.sidebar.radio(
 
 # Welcome Page
 if page == "Welcome":
-    st.title("🚀 Welcome to Nexa - The Nexus Analyzer")
-    st.write(
-        "Nexa helps businesses analyze tax nexus exposure efficiently. "
-        "Follow these steps to ensure compliance and optimize tax reporting."
-    )
 
-    # Add an image above the button (Replace with your GitHub image URL)
-    image_url = "https://raw.githubusercontent.com/TalMirzai/hackathon/refs/heads/main/AssWholeAI-Team.png"
-    st.image(image_url, width=200)  
+        image_url = "https://raw.githubusercontent.com/TalMirzai/hackathon/refs/heads/main/AssWholeAI-Team.png"
+        
+        # Custom CSS for Centering and Animating Button
+        st.markdown(
+            """
+            <style>
+                /* Center all content */
+                .centered {
+                    text-align: center;
+                }
+                /* Center image */
+                .stImage img {
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+                /* Style and animate button */
+                .custom-button {
+                    display: inline-block;
+                    padding: 12px 25px;
+                    font-size: 18px;
+                    font-weight: bold;
+                    color: white;
+                    background: linear-gradient(90deg, #0047AB, #0084FF);
+                    border-radius: 8px;
+                    text-align: center;
+                    border: none;
+                    transition: transform 0.2s ease-in-out, background 0.3s;
+                }
+                .custom-button:hover {
+                    transform: scale(1.1);
+                    background: linear-gradient(90deg, #0084FF, #0047AB);
+                }
+            </style>
+            """,
+            unsafe_allow_html=True
+        )
+        
+        # Welcome Page Content
+        st.markdown("<h1 class='centered'>🚀 Welcome to Nexa - The Nexus Analyzer</h1>", unsafe_allow_html=True)
+        st.markdown(
+            """
+            <p class='centered'>
+                Nexa is Complyt’s premier tool for analyzing tax nexus exposure, developed by the **legendary AssWholeAI hackathon team**.
+                This tool ensures seamless tax compliance by identifying physical and economic nexus obligations, calculating tax exposures,
+                and providing actionable insights.   
+                <br><br>
+                Follow the step-by-step process to upload relevant tax data, classify products, validate customer exemptions, and generate 
+                a **comprehensive nexus report** — all within minutes.  
+                <br><br>
+                This isn’t just another tax tool. **It’s the future of automated tax compliance!** 🚀🔥
+            </p>
+            """,
+            unsafe_allow_html=True
+        )
+        
+        # Centered Image
+        st.image(image_url, width=400)
+        
+        # Centered Button
+        st.markdown(
+            "<div style='text-align: center;'><a href='#' class='custom-button'>Let's Begin</a></div>",
+            unsafe_allow_html=True
+        )
 
-    # Add spacing before the button
-    st.markdown("<br>", unsafe_allow_html=True)
 
     if st.button("Start Now"):
         st.sidebar.radio("Navigate", ["Process Overview"])
