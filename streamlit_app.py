@@ -55,9 +55,7 @@ if "page" not in st.session_state:
 # Sidebar Navigation (Controlled by session state)
 st.sidebar.image("https://complyt.io/wp-content/uploads/2024/03/LOGO.svg", width=200)
 st.sidebar.title("⚡ Nexa - Nexus Analyzer")
-
-# Use session state to control navigation
-selected_page = st.sidebar.radio(
+page = st.sidebar.radio(
     "Navigate",
     [
         "Welcome",
@@ -73,11 +71,6 @@ selected_page = st.sidebar.radio(
            "Step 4: Data Validation", "Step 5: Start Nexus Analysis"].index(st.session_state.page)
 )
 
-# Update session state if user selects from sidebar
-if selected_page != st.session_state.page:
-    st.session_state.page = selected_page
-    st.rerun()
-
 
 # Welcome Page
 if page == "Welcome":
@@ -92,11 +85,9 @@ if page == "Welcome":
     st.image(image_url, width=200)
 
     # Centered Button with Session State Navigation
-if st.button("Start Now"):
-    st.session_state.page = "Process Overview"
-    st.rerun()  # ✅ Ensures Streamlit refreshes the UI
-
-
+    if st.button("Start Now"):
+        st.session_state.page = "Process Overview"
+        st.experimental_rerun()  # Force Streamlit to refresh and update the page
 
 # Process Overview
 elif page == "Process Overview":
