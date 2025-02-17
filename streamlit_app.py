@@ -37,7 +37,7 @@ st.markdown(
 )
 
 # Sidebar Navigation
-st.sidebar.image("https://your-logo-url.com", width=200)  # Add Complyt Logo (Replace URL)
+st.sidebar.image("https://complyt.io/wp-content/uploads/2024/03/LOGO.svg", width=200)  # Add Complyt Logo (Replace URL)
 st.sidebar.title("⚡ Nexa - Nexus Analyzer")
 page = st.sidebar.radio(
     "Navigate",
