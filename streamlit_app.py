@@ -48,6 +48,11 @@ st.markdown(
 )
 
 # Sidebar Navigation
+# Initialize session state for navigation
+if "page" not in st.session_state:
+    st.session_state.page = "Welcome"
+
+# Sidebar Navigation (Controlled by session state)
 st.sidebar.image("https://complyt.io/wp-content/uploads/2024/03/LOGO.svg", width=200)
 st.sidebar.title("⚡ Nexa - Nexus Analyzer")
 page = st.sidebar.radio(
@@ -60,8 +65,12 @@ page = st.sidebar.radio(
         "Step 3: Upload Exempt Customers",
         "Step 4: Data Validation",
         "Step 5: Start Nexus Analysis"
-    ]
+    ],
+    index=["Welcome", "Process Overview", "Step 1: Upload Physical Nexus",
+           "Step 2: Product Classification", "Step 3: Upload Exempt Customers",
+           "Step 4: Data Validation", "Step 5: Start Nexus Analysis"].index(st.session_state.page)
 )
+
 
 # Welcome Page
 if page == "Welcome":
@@ -71,15 +80,14 @@ if page == "Welcome":
         "Follow these steps to ensure compliance and optimize tax reporting."
     )
 
-    # Add an image above the button (Replace with your GitHub image URL)
+    # Add an image above the button
     image_url = "https://raw.githubusercontent.com/TalMirzai/hackathon/refs/heads/main/AssWholeAI-Team.png"
-    st.image(image_url, width=200)  
+    st.image(image_url, width=200)
 
-    # Add spacing before the button
-    st.markdown("<br>", unsafe_allow_html=True)
-
+    # Centered Button with Session State Navigation
     if st.button("Start Now"):
-        st.sidebar.radio("Navigate", ["Process Overview"])
+        st.session_state.page = "Process Overview"
+        st.experimental_rerun()  # Force Streamlit to refresh and update the page
 
 # Process Overview
 elif page == "Process Overview":
