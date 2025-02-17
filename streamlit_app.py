@@ -71,7 +71,6 @@ page = st.sidebar.radio(
            "Step 4: Data Validation", "Step 5: Start Nexus Analysis"].index(st.session_state.page)
 )
 
-
 # Welcome Page
 if page == "Welcome":
     st.title("🚀 Welcome to Nexa - The Nexus Analyzer")
@@ -87,7 +86,8 @@ if page == "Welcome":
     # Centered Button with Session State Navigation
     if st.button("Start Now"):
         st.session_state.page = "Process Overview"
-        st.experimental_rerun()  # Force Streamlit to refresh and update the page
+        st.rerun()  # ✅ FIXED: This replaces the deprecated `st.experimental_rerun()`
+
 
 # Process Overview
 elif page == "Process Overview":
