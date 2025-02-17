@@ -11,7 +11,7 @@ BACKGROUND_COLOR = "#F5F7FA"  # Light Grayish Blue
 # Streamlit Config
 st.set_page_config(page_title="Nexa - Nexus Analyzer", page_icon="⚡", layout="wide")
 
-# Custom CSS for styling
+# Custom CSS for styling and sticky footer
 st.markdown(
     f"""
     <style>
@@ -30,7 +30,6 @@ st.markdown(
         .stButton>button:hover {{
             background-color: {SECONDARY_COLOR} !important;
         }}
-        .uploadedFile {{"color: {PRIMARY_COLOR} !important;"}}
         footer {{
             position: fixed;
             bottom: 0;
@@ -39,6 +38,9 @@ st.markdown(
             background-color: white;
             text-align: center;
             padding: 10px;
+            font-size: 14px;
+            color: #666;
+            border-top: 1px solid #ddd;
         }}
     </style>
     """,
@@ -68,10 +70,6 @@ if page == "Welcome":
         "Nexa helps businesses analyze tax nexus exposure efficiently. "
         "Follow these steps to ensure compliance and optimize tax reporting."
     )
-
-    # Load and display uploaded image
-    local_image_path = "/mnt/data/image.png"
-    st.image(local_image_path, use_container_width=True)
 
     if st.button("Start Now"):
         st.sidebar.radio("Navigate", ["Process Overview"])
@@ -173,8 +171,11 @@ elif page == "Step 5: Start Nexus Analysis":
             st.error("❌ Analysis Failed. Try again later.")
 
 # Footer (Ensures it is on every page)
-st.markdown("---")
 st.markdown(
-    "<footer>💡 Powered by <b>Complyt</b> | Simplifying Tax Compliance</footer>",
+    """
+    <footer>
+        💡 Powered by <b>Complyt</b> | Simplifying Tax Compliance
+    </footer>
+    """,
     unsafe_allow_html=True
 )
