@@ -71,6 +71,13 @@ if page == "Welcome":
         "Follow these steps to ensure compliance and optimize tax reporting."
     )
 
+    # Add an image above the button (Replace with your GitHub image URL)
+    image_url = "https://github.com/TalMirzai/hackathon/blob/a5c2ec698888485aa7e4cb4621bd5757fe47ec86/aaaa.png"
+    st.image(image_url, use_container_width=True)
+
+    # Add spacing before the button
+    st.markdown("<br>", unsafe_allow_html=True)
+
     if st.button("Start Now"):
         st.sidebar.radio("Navigate", ["Process Overview"])
 
