@@ -31,13 +31,22 @@ st.markdown(
             background-color: {SECONDARY_COLOR} !important;
         }}
         .uploadedFile {{"color: {PRIMARY_COLOR} !important;"}}
+        footer {{
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            text-align: center;
+            padding: 10px;
+        }}
     </style>
     """,
     unsafe_allow_html=True
 )
 
 # Sidebar Navigation
-st.sidebar.image("https://complyt.io/wp-content/uploads/2024/03/LOGO.svg", width=200)  # Add Complyt Logo (Replace URL)
+st.sidebar.image("https://complyt.io/wp-content/uploads/2024/03/LOGO.svg", width=200)
 st.sidebar.title("⚡ Nexa - Nexus Analyzer")
 page = st.sidebar.radio(
     "Navigate",
@@ -59,7 +68,10 @@ if page == "Welcome":
         "Nexa helps businesses analyze tax nexus exposure efficiently. "
         "Follow these steps to ensure compliance and optimize tax reporting."
     )
-    st.image("https://your-welcome-image-url.com", use_column_width=True)
+
+    # Load and display uploaded image
+    local_image_path = "/mnt/data/image.png"
+    st.image(local_image_path, use_container_width=True)
 
     if st.button("Start Now"):
         st.sidebar.radio("Navigate", ["Process Overview"])
@@ -89,7 +101,7 @@ elif page == "Step 1: Upload Physical Nexus":
     uploaded_file = st.file_uploader("Upload Nexus File (CSV)", type=["csv"])
     if uploaded_file:
         df = pd.read_csv(uploaded_file)
-        st.dataframe(df)  # Display the uploaded data
+        st.dataframe(df)
         st.success("✅ File uploaded successfully!")
 
 # Step 2: Product Classification with PC BOT
@@ -108,7 +120,6 @@ elif page == "Step 2: Product Classification":
         st.write("🧠 **PC BOT: AI-Powered Product Classification**")
         user_input = st.text_input("Describe the product (e.g., 'Cloud-based SaaS subscription')")
         if st.button("Classify Product"):
-            # Simulated AI Response
             classification = "Digital Services - Software (Complyt Tax Code: DS100)"
             st.success(f"✅ PC BOT Suggests: {classification}")
 
@@ -161,6 +172,9 @@ elif page == "Step 5: Start Nexus Analysis":
         else:
             st.error("❌ Analysis Failed. Try again later.")
 
-# Footer
+# Footer (Ensures it is on every page)
 st.markdown("---")
-st.markdown("💡 Powered by **Complyt** | Simplifying Tax Compliance")
+st.markdown(
+    "<footer>💡 Powered by <b>Complyt</b> | Simplifying Tax Compliance</footer>",
+    unsafe_allow_html=True
+)
